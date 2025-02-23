@@ -31,11 +31,14 @@ class TodoService:
         await session.commit()
         return {"message": "todo deleted"}
 
-    #
-    # @classmethod
-    # async def update_todo(cls, session: AsyncSession, todo_id: int, todo_data: TodoCreate):
-    #     query = select(Todo).where(Todo.id == todo_id)
-    #     result = await session.execute(query)
-    #     todo = result.scalars().first()
-    #     if not todo:
-    #         return
+
+    @classmethod
+    async def change_status_todo(cls, session: AsyncSession, todo_id: int):
+        query = select(Todo).where(Todo.id == todo_id)
+        result = await session.execute(query)
+        todo = result.scalar_one_or_none()
+        if not todo:
+            return None
+        todo.completed = False if todo.completed else True
+        await session.commit()
+

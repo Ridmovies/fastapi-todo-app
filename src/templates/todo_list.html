@@ -7,13 +7,20 @@
 <body>
     <div>
       {% for todo in todos %}
+
+
       <div style="display:flex; margin-bottom:20px; margin-left:20px;">
         <div>
-            <h2>{{ todo.text }}</h2>
+            {% if todo.completed %}
+            <h2><s>
+                <a href="{{ url_for('todo_change_status', todo_id=todo.id) }}">{{ todo.text }}</a>
+            </s></h2>
+            {% else %}
+                <h2><a href="{{ url_for('todo_change_status', todo_id=todo.id) }}">{{ todo.text }}</a></h2>
+            {% endif %}
             <h4>{{ todo.created_at }} - {{ todo.completed }}</h4>
-
         </div>
-        </div>
+      </div>
       {% endfor %}
     </div>
 

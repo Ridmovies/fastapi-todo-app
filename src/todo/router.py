@@ -19,3 +19,7 @@ async def todo_create(session: SessionDep, todo_data: TodoCreate):
 @todo_router.delete("/{todo_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def todo_delete(session: SessionDep, todo_id: int):
     return await TodoService.delete_todo(session=session, todo_id=todo_id)
+
+@todo_router.get("/{todo_id}", status_code=status.HTTP_204_NO_CONTENT)
+async def todo_change_status(session: SessionDep, todo_id: int):
+    return await TodoService.change_status_todo(session=session, todo_id=todo_id)
