@@ -12,12 +12,15 @@ Todo приложение
 - FastAPI
 - black
 - uvicorn
+- Jinja2
 
 
 ## Roadmap
 - [x] Создание и подключение к базе данных SQLite
-- [ ] Модель Todo
-
+- [x] Модель Todo
+- [x] Todo роутер
+- [ ] Jinja2 frontend
+  - [ ] подключить Jinja2
 
 #### Запуск приложения
 ```bash

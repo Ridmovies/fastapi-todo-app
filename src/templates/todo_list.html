@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+      {% for todo in todos %}
+      <div style="display:flex; margin-bottom:20px; margin-left:20px;">
+        <div>
+            <h2>{{ todo.text }}</h2>
+            <h4>{{ todo.created_at }} - {{ todo.completed }}</h4>
+
+        </div>
+        </div>
+      {% endfor %}
+    </div>
+
+</body>
+</html>
