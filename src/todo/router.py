@@ -16,10 +16,12 @@ async def todo_list(session: SessionDep):
 async def todo_create(session: SessionDep, todo_data: TodoCreate):
     return await TodoService.create_todo(session=session, todo_data=todo_data)
 
+
 @todo_router.delete("/{todo_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def todo_delete(session: SessionDep, todo_id: int):
     return await TodoService.delete_todo(session=session, todo_id=todo_id)
 
-@todo_router.get("/{todo_id}", status_code=status.HTTP_204_NO_CONTENT)
-async def todo_change_status(session: SessionDep, todo_id: int):
-    return await TodoService.change_status_todo(session=session, todo_id=todo_id)
+
+@todo_router.patch("/{todo_id}", status_code=status.HTTP_204_NO_CONTENT)
+async def toggle_todo_status(session: SessionDep, todo_id: int):
+    return await TodoService.toggle_todo_status(session=session, todo_id=todo_id)

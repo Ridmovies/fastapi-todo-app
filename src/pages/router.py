@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from fastapi import APIRouter, Depends
 from starlette.requests import Request
 from starlette.templating import Jinja2Templates
@@ -17,5 +19,9 @@ async def get_todos_page(
 ):
     return templates.TemplateResponse(
         name="todo_list.html",
-        context={"request": request, "todos": todos},
+        context={
+            "request": request,
+            "todos": todos,
+            "current_date": datetime.now().strftime("%Y-%m-%d")  # Добавляем
+        },
     )
