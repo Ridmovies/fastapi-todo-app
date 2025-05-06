@@ -14,6 +14,7 @@ class TodoService:
     async def get_todo_list(cls, session: AsyncSession):
         # Сначала сортируем по дате (ближайшие вверху), затем по времени
         query = select(Todo).order_by(
+            Todo.completed.asc(),  # False (0) будет перед True (1) - невыполненные вверху
             Todo.day.asc(),  # Сначала ближайшие даты
             Todo.start_time.asc()  # Для одинаковых дат - раньшее время вверху
         )
